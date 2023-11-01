@@ -40,11 +40,13 @@ class HomeController extends Controller
             $saldo = $credit - $debit;
             
             $nasabah = User::where('role', 'siswa')->get()->count();
+            $daftar_user = User::where('role', 'siswa')->get();
+            $daftar_transaksi = Transaction::where('user_id', '4')->get();
 
             $transactions = Transaction::all()->count();
             $request_topup = Wallet::where('status', 'proses')->get();
 
-            return view('home', compact('saldo', 'nasabah', 'transactions', 'request_topup'));
+            return view('home', compact('saldo', 'nasabah', 'transactions', 'request_topup','daftar_user','daftar_transaksi','wallets'));
         }
         if(Auth::user()->role == "siswa"){
 
