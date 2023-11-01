@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Product;
 use App\Models\Transaction;
 use App\Models\User;
@@ -28,8 +29,15 @@ class HomeController extends Controller
      */
     public function index()
     {
+        if (Auth::user()->role == 'kantin') {
+            $products = Product::all();
+            $categories = Category::all();
+            $transactions = Transaction::where('status', 'dibayar')->get();
+
+            return view('home', compact('products','categories','transactions'));
+        }
         if(Auth::user()->role == "bank"){
-            $wallets = Wallet::where('status', 'selesai')->where('user_id', '4')->get();
+            $wallets = Wallet::where('user_id', '4')->get();
             $credit = 0;
             $debit = 0;
             foreach($wallets as $wallet)
@@ -46,7 +54,7 @@ class HomeController extends Controller
             $transactions = Transaction::all()->count();
             $request_topup = Wallet::where('status', 'proses')->get();
 
-            return view('home', compact('saldo', 'nasabah', 'transactions', 'request_topup','daftar_user','daftar_transaksi','wallets'));
+            return view('home', compact('saldo','credit','debit', 'nasabah', 'transactions', 'request_topup','daftar_user','daftar_transaksi','wallets'));
         }
         if(Auth::user()->role == "siswa"){
 

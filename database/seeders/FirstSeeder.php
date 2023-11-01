@@ -40,9 +40,15 @@ class FirstSeeder extends Seeder
             'role' => 'kantin'
         ]);
         User::create([
-            'name' => 'Ojan',
-            'username' => 'ojan',
-            'password' => Hash::make('ojan'),
+            'name' => 'Raihan',
+            'username' => 'raihan',
+            'password' => Hash::make('raihan'),
+            'role' => 'siswa'
+        ]);
+        User::create([
+            'name' => 'Bajry',
+            'username' => 'bajry',
+            'password' => Hash::make('bajry'),
             'role' => 'siswa'
         ]);
         Student::create([
