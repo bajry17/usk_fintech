@@ -3,7 +3,9 @@
 namespace Database\Seeders;
 
 use App\Models\Category;
+use App\Models\Guru;
 use App\Models\Product;
+use App\Models\Stand;
 use App\Models\Student;
 use App\Models\Transaction;
 use App\Models\User;
@@ -153,7 +155,7 @@ class FirstSeeder extends Seeder
         Wallet::create([
             'user_id' => 4,
             'debit' => $total_debit,
-            'description' => 'peembelian produk'
+            'description' => 'pembelian produk'
         ]);
         foreach($transactions as $transaction)
         {
@@ -167,5 +169,38 @@ class FirstSeeder extends Seeder
                 'status' => 'diambil'
             ]);
         }
+
+        Stand::create([
+            'name' => 'Stand 1',
+            'kelas' => 'XII',
+            'jurusan' => 'RPL'
+        ]);
+        Stand::create([
+            'name' => 'Stand 2',
+            'kelas' => 'XII',
+            'jurusan' => 'OTKP'
+        ]);
+        Stand::create([
+            'name' => 'Stand 3',
+            'kelas' => 'XII',
+            'jurusan' => 'AKL'
+        ]);
+        Stand::create([
+            'name' => 'Stand 4',
+            'kelas' => 'XII',
+            'jurusan' => 'BDP'
+        ]);
+        Guru::create([
+            'name' => 'Pak Mujahid',
+            'gender' =>'laki-laki'
+        ]);
+        Guru::create([
+            'name' => 'Pak Aroh',
+            'gender' =>'laki-laki'
+        ]);
+        Guru::create([
+            'name' => 'Bu Eri',
+            'gender' =>'perempuan'
+        ]);
     }
 }

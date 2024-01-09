@@ -1,7 +1,9 @@
 <?php
 
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\StandController;
 use App\Http\Controllers\TransactionController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\WalletController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -37,3 +39,9 @@ Route::post('/product/store', [ProductController::class, 'store'])->name('produc
 Route::delete('/home/destroy/{id}', [ProductController::class, 'destroy'])->name('product.destroy');
 Route::post('/transaction/{id}',[TransactionController::class,'take'])->name('transaction.take');
 Route::delete('/DeleteBaskets/{id}',[TransactionController::class,'DeleteBaskets'])->name('DeleteBaskets');
+Route::get('/data_user', [UserController::class,'index'])->name('data_user');
+Route::post('/AddUser', [UserController::class,'store'])->name('AddUser');  
+Route::delete('/data_user/destroy/{id}', [UserController::class, 'destroy'])->name('data_user.destroy');
+Route::put('/data_user/update/{id}', [ProductController::class, 'update'])->name('UpdateUser');
+Route::resource('stand',StandController::class);
+

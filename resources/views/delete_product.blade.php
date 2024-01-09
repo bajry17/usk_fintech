@@ -56,11 +56,11 @@
                             <div class="card-footer">
                                 <div class="row">
                                     <div class="col">
-                                        <form action="{{ route('product.destroy') }}" method="POST">
+                                        <form action="{{ route('product.destroy',['id'=>$product->id]) }}" method="POST">
                                             @csrf
                                             @method('delete')
                                             <input type="hidden" name="product_id" value="{{ $product->id }}">
-                                            <button type="submit" class="btn btn-sm btn-success">Yes</button>
+                                            <button type="submit" class="btn btn-success">Delete</button>
                                         </form>
                                     </div>
                                     <div class="col text-end">
